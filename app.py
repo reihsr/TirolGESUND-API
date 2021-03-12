@@ -1,12 +1,22 @@
-from flask import Flask
+from flask import render_template
+from models import Participant, ParticipantSchema
+from jproperties import Properties
+import config
 
-app = Flask(__name__)
+configs = Properties()
+with open('config.properties', 'rb') as config_file:
+    configs.load(config_file)
+
+# Get the application instance
+connex_app = config.connex_app
+# Read the swagger.yml file to configure the endpoints
+connex_app.add_api("swagger.yml")
 
 
-@app.route('/')
+@connex_app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return render_template("home.html")
 
 
 if __name__ == '__main__':
-    app.run()
+    connex_app.run(host=configs.get("HOST").data, debug=configs.get("DEBUG").data)
