@@ -6,9 +6,9 @@ from flask_marshmallow import Marshmallow
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-configs = Properties()
+configsProperty = Properties()
 with open('config.properties', 'rb') as config_file:
-    configs.load(config_file)
+    configsProperty.load(config_file)
 
 # Create the connexion application instance
 connex_app = connexion.App(__name__, specification_dir=basedir)
@@ -19,7 +19,7 @@ app.config["template_folder"] = "templates"
 
 # Configure the SqlAlchemy part of the app instance
 app.config["SQLALCHEMY_ECHO"] = True
-app.config["SQLALCHEMY_DATABASE_URI"] = configs.get("SQLALCHEMY_DATABASE_URI").data
+app.config["SQLALCHEMY_DATABASE_URI"] = configsProperty.get("SQLALCHEMY_DATABASE_URI").data
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Create the SqlAlchemy db instance
