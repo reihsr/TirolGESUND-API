@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
-  description: This is the swagger file that goes with our server code
+  description: Swagger file for the TirolGESUND APIs
   version: "1.0.0"
-  title: Swagger REST Article
+  title: Swagger REST TirolGESUND
 consumes:
   - "application/json"
 produces:
@@ -12,6 +12,39 @@ basePath: "/api"
 
 # Paths supported by the server application
 paths:
+  /v1/status:
+    get:
+      operationId: "api.v1.status.getStatus"
+      tags:
+        - "Status"
+        - "V1"
+      summary: "Status of the application and the version of the API"
+      description: "Get status of API"
+      responses:
+        200:
+          description: "Successful get staus of API"
+          schema:
+            $ref: "#/definitions/Status"
+
+  /v1/garminDailySummaries:
+    post:
+      operationId: "api.v1.garminDailySummaries.createGarminDailySummaries"
+      tags:
+        - "Garmin"
+        - "V1"
+      summary: "Create daily summeries"
+      description: "Create daily summeries"
+      parameters:
+        - in: "body"
+          name: "garminDailySummaries"
+          description: "List of daily summaries from Garmin"
+          required: true
+          schema:
+            $ref: "#/definitions/GarminDailySummaries"
+      responses:
+        200:
+          description: "Successful recived data"
+
   /v1/dailyHealthStatus:
     get:
       operationId: "people.read"
@@ -32,3 +65,110 @@ paths:
                   type: "string"
                 timestamp:
                   type: "string"
+definitions:
+  Status:
+    type: "object"
+    properties:
+      Version:
+        type: "string"
+    example:
+      Version: "1.0.0"
+  GarminDailySummaries:
+    type: "array"
+    items:
+      $ref: "#/definitions/GarminDailySummary"
+  GarminDailySummary:
+    type: "object"
+    properties:
+      summaryId:
+        type: "string"
+      calendarDate:
+        type: "string"
+      startTimeInSeconds:
+        type: "integer"
+        format: "int32"
+      startTimeOffsetInSeconds:
+        type: "integer"
+        format: "int32"
+      activityType:
+        type: "string"
+      durationInSeconds:
+        type: "integer"
+        format: "int32"
+      steps:
+        type: "integer"
+        format: "int32"
+      distanceInMeters:
+        type: "number"
+        format: "float"
+      activeTimeInSeconds:
+        type: "integer"
+        format: "int32"
+      activeKilocalories:
+        type: "integer"
+        format: "int32"
+      bmrKilocalories:
+        type: "integer"
+        format: "int32"
+      consumedCalories:
+        type: "integer"
+        format: "int32"
+      moderateIntensityDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      vigorousIntensityDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      floorsClimbed:
+        type: "integer"
+        format: "int32"
+      minHeartRateInBeatsPerMinute:
+        type: "integer"
+        format: "int32"
+      averageHeartRateInBeatsPerMinute:
+        type: "integer"
+        format: "int32"
+      maxHeartRateInBeatsPerMinute:
+        type: "integer"
+        format: "int32"
+      restingHeartRateInBeatsPerMinute:
+        type: "integer"
+        format: "int32"
+      averageStressLevel:
+        type: "integer"
+        format: "int32"
+      maxStressLevel:
+        type: "integer"
+        format: "int32"
+      stressDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      restStressDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      activityStressDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      lowStressDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      mediumStressDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      highStressDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      stressQualifier:
+        type: "string"
+      stepsGoal:
+        type: "integer"
+        format: "int32"
+      netKilocaloriesGoal:
+        type: "integer"
+        format: "int32"
+      intensityDurationGoalInSeconds:
+        type: "integer"
+        format: "int32"
+      floorsClimbedGoal:
+        type: "integer"
+        format: "int32"

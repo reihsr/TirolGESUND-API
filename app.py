@@ -22,3 +22,6 @@ def hello_world():
 
 if __name__ == '__main__':
     connex_app.run(host=configsProperty.get("HOST").data, debug=configsProperty.get("DEBUG").data)
+
+    #https://github.com/realpython/materials/blob/master/flask-connexion-rest-part-4/server.py
+    #https://realpython.com/flask-connexion-rest-api-part-2/
