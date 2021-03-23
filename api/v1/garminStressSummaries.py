@@ -19,16 +19,16 @@ def createGarminStressSummaries(garminStressSummaries):
     return 200
 
 def createGarminStressSummarie(garminStressSummarie):
-    sleep = GarminStressSummarie.query.filter_by(summaryId=garminStressSummarie.get("summaryId")).first()
-    if sleep == None:
-        sleep = GarminStressSummarie()
-        sleep.summaryId = garminStressSummarie.get("summaryId")
-        db.session.add(sleep)
-    sleep.calendarDate = garminStressSummarie.get("calendarDate")
-    sleep.startTimeInSeconds = garminStressSummarie.get("startTimeInSeconds")
-    sleep.startTimeOffsetInSeconds = garminStressSummarie.get("startTimeOffsetInSeconds")
-    sleep.durationInSeconds = garminStressSummarie.get("durationInSeconds")
-    sleep.timeOffsetStressLevelValues = garminStressSummarie.get("timeOffsetStressLevelValues")
-    sleep.timeOffsetBodyBatteryValues = garminStressSummarie.get("timeOffsetBodyBatteryValues")
+    stress = GarminStressSummarie.query.filter_by(summaryId=garminStressSummarie.get("summaryId")).first()
+    if stress == None:
+        stress = GarminStressSummarie()
+        stress.summaryId = garminStressSummarie.get("summaryId")
+        db.session.add(stress)
+    stress.calendarDate = garminStressSummarie.get("calendarDate")
+    stress.startTimeInSeconds = garminStressSummarie.get("startTimeInSeconds")
+    stress.startTimeOffsetInSeconds = garminStressSummarie.get("startTimeOffsetInSeconds")
+    stress.durationInSeconds = garminStressSummarie.get("durationInSeconds")
+    stress.timeOffsetStressLevelValues = garminStressSummarie.get("timeOffsetStressLevelValues")
+    stress.timeOffsetBodyBatteryValues = garminStressSummarie.get("timeOffsetBodyBatteryValues")
     db.session.commit()
     return

@@ -82,27 +82,25 @@ paths:
       responses:
         200:
           description: "Successful received data"
-
-  /v1/dailyHealthStatus:
-    get:
-      operationId: "people.read"
+  /v1/garminUserMetricsSummaries:
+    post:
+      operationId: "api.v1.garminUserMetricsSummaries.createGarminUserMetricsSummaries"
       tags:
-        - "People"
-      summary: "The people data structure supported by the server application"
-      description: "Read the list of people"
+        - "Garmin"
+        - "V1"
+      summary: "Create User Metrics summeries"
+      description: "Create User Metrics summeries"
+      parameters:
+        - in: "body"
+          name: "garminUserMetricsSummaries"
+          description: "List of User Metrics summaries from Garmin"
+          required: true
+          schema:
+            $ref: "#/definitions/GarminUserMetricsSummaries"
       responses:
         200:
-          description: "Successful read people list operation"
-          schema:
-            type: "array"
-            items:
-              properties:
-                fname:
-                  type: "string"
-                lname:
-                  type: "string"
-                timestamp:
-                  type: "string"
+          description: "Successful received data"
+
 definitions:
   Status:
     type: "object"
@@ -123,6 +121,10 @@ definitions:
     type: "array"
     items:
       $ref: "#/definitions/GarminStressSummary"
+  GarminUserMetricsSummaries:
+    type: "array"
+    items:
+      $ref: "#/definitions/GarminUserMetricsSummary"
   GarminDailySummary:
     type: "object"
     properties:
@@ -279,3 +281,16 @@ definitions:
         type: "object"
       timeOffsetBodyBatteryDetails:
         type: "object"
+  GarminUserMetricsSummary:
+    type: "object"
+    properties:
+      summaryId:
+        type: "string"
+      calendarDate:
+        type: "string"
+      Vo2Max:
+        type: "number"
+        format: "float"
+      fitnessAge:
+        type: "integer"
+        format: "int32"

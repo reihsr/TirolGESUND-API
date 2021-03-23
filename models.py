@@ -98,3 +98,15 @@ class GarminStressSummarieSchema(ma.Schema):
     class Meta:
         model = GarminStressSummarie
         sqla_session = db.session
+
+class GarminUserMetricsSummarie(db.Model):
+    __tablename__ = "user_metrics_summarie"
+    summaryId = db.Column('summary_id', db.String(100), primary_key=True)
+    calendarDate = db.Column('calendar_date', db.String(100))
+    Vo2Max = db.Column('vo2max', db.Float)
+    fitnessAge = db.Column('fitness_age', db.Integer)
+
+class GarminUserMetricsSummarieSchema(ma.Schema):
+    class Meta:
+        model = GarminUserMetricsSummarie
+        sqla_session = db.session
