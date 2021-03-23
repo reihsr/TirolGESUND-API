@@ -19,6 +19,11 @@ app = connex_app.app
 def hello_world():
     return render_template("home.html")
 
+@connex_app.route('/createDB')
+def createDB():
+    config.db.create_all()
+    return render_template('home.html', msg_text='DB Created.')
+
 
 if __name__ == '__main__':
     connex_app.run(host=configsProperty.get("HOST").data, debug=configsProperty.get("DEBUG").data)

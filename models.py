@@ -1,5 +1,6 @@
 from datetime import datetime
 from config import db, ma
+import sqlalchemy
 
 class Participant(db.Model):
     __tablename__ = "participant"
@@ -41,7 +42,7 @@ class GarminDailySummarie(db.Model):
     averageHeartRateInBeatsPerMinute = db.Column('average_heart_rate_in_beats_per_minute', db.Integer)
     maxHeartRateInBeatsPerMinute = db.Column('max_heart_rate_in_beats_per_minute', db.Integer)
     restingHeartRateInBeatsPerMinute = db.Column('resting_heart_rate_in_beats_per_minute', db.Integer)
-    timeOffsetHeartRateSamples = db.Column('time_offset_heart_rate_samples', db.String)
+    timeOffsetHeartRateSamples = db.Column('time_offset_heart_rate_samples', sqlalchemy.dialects.postgresql.JSONB)
     averageStressLevel = db.Column('average_stress_level', db.Integer)
     maxStressLevel = db.Column('max_stress_level', db.Integer)
     stressDurationInSeconds = db.Column('stress_duration_in_seconds', db.Integer)
@@ -59,4 +60,26 @@ class GarminDailySummarie(db.Model):
 class GarminDailySummarieSchema(ma.Schema):
     class Meta:
         model = GarminDailySummarie
+        sqla_session = db.session
+
+class GarminSleepSummarie(db.Model):
+    __tablename__ = "sleep_summarie"
+    summaryId = db.Column('summary_id', db.String(100), primary_key=True)
+    calendarDate = db.Column('calendar_date', db.String(100))
+    startTimeInSeconds = db.Column('start_time_in_seconds', db.Integer)
+    startTimeOffsetInSeconds = db.Column('start_time_offset_in_seconds', db.Integer)
+    durationInSeconds = db.Column('duration_in_seconds', db.Integer)
+    unmeasurableSleepInSeconds = db.Column('unmeasurable_sleep_in_seconds', db.Integer)
+    deepSleepDurationInSeconds = db.Column('deep_sleep_duration_in_seconds', db.Integer)
+    lightSleepDurationInSeconds = db.Column('light_sleep_duration_in_seconds', db.Integer)
+    remSleepInSeconds = db.Column('rem_sleep_in_seconds', db.Integer)
+    awakeDurationInSeconds = db.Column('awake_duration_in_seconds', db.Integer)
+    sleepLevelsMap = db.Column('sleep_levels_map', sqlalchemy.dialects.postgresql.JSONB)
+    validation = db.Column('validation', db.String)
+    timeOffsetSleepRespiration = db.Column('time_offset_sleep_respiration', sqlalchemy.dialects.postgresql.JSONB)
+    timeOffsetSleepSpo2 = db.Column('time_offset_sleep_spo2', sqlalchemy.dialects.postgresql.JSONB)
+
+class GarminSleepSummarieSchema(ma.Schema):
+    class Meta:
+        model = GarminSleepSummarie
         sqla_session = db.session

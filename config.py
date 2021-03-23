@@ -20,7 +20,7 @@ app.config["template_folder"] = "templates"
 # Configure the SqlAlchemy part of the app instance
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SQLALCHEMY_DATABASE_URI"] = configsProperty.get("SQLALCHEMY_DATABASE_URI").data
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
 # Create the SqlAlchemy db instance
 db = SQLAlchemy(app)
