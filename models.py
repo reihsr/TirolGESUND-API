@@ -83,3 +83,18 @@ class GarminSleepSummarieSchema(ma.Schema):
     class Meta:
         model = GarminSleepSummarie
         sqla_session = db.session
+
+class GarminStressSummarie(db.Model):
+    __tablename__ = "stress_summarie"
+    summaryId = db.Column('summary_id', db.String(100), primary_key=True)
+    calendarDate = db.Column('calendar_date', db.String(100))
+    startTimeInSeconds = db.Column('start_time_in_seconds', db.Integer)
+    startTimeOffsetInSeconds = db.Column('start_time_offset_in_seconds', db.Integer)
+    durationInSeconds = db.Column('duration_in_seconds', db.Integer)
+    timeOffsetStressLevelValues = db.Column('time_offset_stress_level_values', sqlalchemy.dialects.postgresql.JSONB)
+    timeOffsetBodyBatteryValues = db.Column('time_offset_body_battery_values', sqlalchemy.dialects.postgresql.JSONB)
+
+class GarminStressSummarieSchema(ma.Schema):
+    class Meta:
+        model = GarminStressSummarie
+        sqla_session = db.session

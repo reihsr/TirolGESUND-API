@@ -43,7 +43,45 @@ paths:
             $ref: "#/definitions/GarminDailySummaries"
       responses:
         200:
-          description: "Successful recived data"
+          description: "Successful received data"
+
+  /v1/garminSleepSummaries:
+    post:
+      operationId: "api.v1.garminSleepSummaries.createGarminSleepSummaries"
+      tags:
+        - "Garmin"
+        - "V1"
+      summary: "Create sleep summeries"
+      description: "Create sleep summeries"
+      parameters:
+        - in: "body"
+          name: "garminSleepSummaries"
+          description: "List of sleep summaries from Garmin"
+          required: true
+          schema:
+            $ref: "#/definitions/GarminSleepSummaries"
+      responses:
+        200:
+          description: "Successful received data"
+
+  /v1/garminStressSummaries:
+    post:
+      operationId: "api.v1.garminStressSummaries.createGarminStressSummaries"
+      tags:
+        - "Garmin"
+        - "V1"
+      summary: "Create stress summeries"
+      description: "Create stress summeries"
+      parameters:
+        - in: "body"
+          name: "garminStressSummaries"
+          description: "List of stress summaries from Garmin"
+          required: true
+          schema:
+            $ref: "#/definitions/GarminStressSummaries"
+      responses:
+        200:
+          description: "Successful received data"
 
   /v1/dailyHealthStatus:
     get:
@@ -77,6 +115,14 @@ definitions:
     type: "array"
     items:
       $ref: "#/definitions/GarminDailySummary"
+  GarminSleepSummaries:
+    type: "array"
+    items:
+      $ref: "#/definitions/GarminSleepSummary"
+  GarminStressSummaries:
+    type: "array"
+    items:
+      $ref: "#/definitions/GarminStressSummary"
   GarminDailySummary:
     type: "object"
     properties:
@@ -134,6 +180,8 @@ definitions:
       restingHeartRateInBeatsPerMinute:
         type: "integer"
         format: "int32"
+      timeOffsetHeartRateSamples:
+        type: "object"
       averageStressLevel:
         type: "integer"
         format: "int32"
@@ -172,3 +220,62 @@ definitions:
       floorsClimbedGoal:
         type: "integer"
         format: "int32"
+  GarminSleepSummary:
+    type: "object"
+    properties:
+      summaryId:
+        type: "string"
+      calendarDate:
+        type: "string"
+      startTimeInSeconds:
+        type: "integer"
+        format: "int32"
+      startTimeOffsetInSeconds:
+        type: "integer"
+        format: "int32"
+      durationInSeconds:
+        type: "integer"
+        format: "int32"
+      unmeasurableSleepInSeconds:
+        type: "integer"
+        format: "int32"
+      deepSleepDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      lightSleepDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      remSleepInSeconds:
+        type: "integer"
+        format: "int32"
+      awakeDurationInSeconds:
+        type: "integer"
+        format: "int32"
+      sleepLevelsMap:
+        type: "object"
+      validation:
+        type: "string"
+      timeOffsetSleepRespiration:
+        type: "object"
+      timeOffsetSleepSpo2:
+        type: "object"
+  GarminStressSummary:
+    type: "object"
+    properties:
+      summaryId:
+        type: "string"
+      calendarDate:
+        type: "string"
+      startTimeInSeconds:
+        type: "integer"
+        format: "int32"
+      startTimeOffsetInSeconds:
+        type: "integer"
+        format: "int32"
+      durationInSeconds:
+        type: "integer"
+        format: "int32"
+      timeOffsetStressLevelValues:
+        type: "object"
+      timeOffsetBodyBatteryDetails:
+        type: "object"

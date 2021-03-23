@@ -20,7 +20,6 @@ def createGarminDailySummaries(garminDailySummaries):
 
 def createGarminDailySummarie(garminDailySummarie):
     summary = GarminDailySummarie.query.filter_by(summaryId=garminDailySummarie.get("summaryId")).first()
-    print(summary)
     if summary == None:
         summary = GarminDailySummarie()
         summary.summaryId = garminDailySummarie.get("summaryId")
