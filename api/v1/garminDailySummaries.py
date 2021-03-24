@@ -14,7 +14,7 @@ def createGarminDailySummaries(garminDailySummaries):
     filePath = os.path.join(configsProperty.get("FILE_STORAGE_PATH").data, fileName)
     with open(filePath, 'w') as outfile:
         json.dump(garminDailySummaries, outfile, indent=4)
-    for garminDailySummarie in garminDailySummaries:
+    for garminDailySummarie in garminDailySummaries.get("dailies"):
         createGarminDailySummarie(garminDailySummarie)
     return 200
 

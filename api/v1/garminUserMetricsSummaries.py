@@ -14,7 +14,7 @@ def createGarminUserMetricsSummaries(garminUserMetricsSummaries):
     filePath = os.path.join(configsProperty.get("FILE_STORAGE_PATH").data, fileName)
     with open(filePath, 'w') as outfile:
         json.dump(garminUserMetricsSummaries, outfile, indent=4)
-    for garminUserMetricsSummarie in garminUserMetricsSummaries:
+    for garminUserMetricsSummarie in garminUserMetricsSummaries.get("userMetrics"):
         createGarminUserMetricsSummarie(garminUserMetricsSummarie)
     return 200
 

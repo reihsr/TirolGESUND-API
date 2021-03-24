@@ -14,7 +14,7 @@ def createGarminStressSummaries(garminStressSummaries):
     filePath = os.path.join(configsProperty.get("FILE_STORAGE_PATH").data, fileName)
     with open(filePath, 'w') as outfile:
         json.dump(garminStressSummaries, outfile, indent=4)
-    for garminStressSummarie in garminStressSummaries:
+    for garminStressSummarie in garminStressSummaries.get("stressDetails"):
         createGarminStressSummarie(garminStressSummarie)
     return 200
 
