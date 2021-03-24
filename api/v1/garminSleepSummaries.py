@@ -14,7 +14,7 @@ def createGarminSleepSummaries(garminSleepSummaries):
     filePath = os.path.join(configsProperty.get("FILE_STORAGE_PATH").data, fileName)
     with open(filePath, 'w') as outfile:
         json.dump(garminSleepSummaries, outfile, indent=4)
-    for garminSleepSummarie in garminSleepSummaries.get("sleep"):
+    for garminSleepSummarie in garminSleepSummaries.get("sleeps"):
         createGarminSleepSummarie(garminSleepSummarie)
     return 200
 
