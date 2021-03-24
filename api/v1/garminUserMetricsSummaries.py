@@ -24,6 +24,8 @@ def createGarminUserMetricsSummarie(garminUserMetricsSummarie):
         userMetrics = GarminUserMetricsSummarie()
         userMetrics.summaryId = garminUserMetricsSummarie.get("summaryId")
         db.session.add(userMetrics)
+    userMetrics.userId = garminUserMetricsSummarie.get("userId")
+    userMetrics.userAccessToken = garminUserMetricsSummarie.get("userAccessToken")
     userMetrics.calendarDate = garminUserMetricsSummarie.get("calendarDate")
     userMetrics.Vo2Max = garminUserMetricsSummarie.get("Vo2Max")
     userMetrics.fitnessAge = garminUserMetricsSummarie.get("fitnessAge")

@@ -24,6 +24,8 @@ class ParticipantSchema(ma.Schema):
 class GarminDailySummarie(db.Model):
     __tablename__ = "daily_summarie"
     summaryId = db.Column('summary_id', db.String(100), primary_key=True)
+    userId = db.Column('calendar_date', db.String(100))
+    userAccessToken = db.Column('calendar_date', db.String(100))
     calendarDate = db.Column('calendar_date', db.String(100))
     startTimeInSeconds = db.Column('start_time_in_seconds', db.Integer)
     startTimeOffsetInSeconds = db.Column('start_time_offset_in_seconds', db.Integer)
@@ -65,6 +67,8 @@ class GarminDailySummarieSchema(ma.Schema):
 class GarminSleepSummarie(db.Model):
     __tablename__ = "sleep_summarie"
     summaryId = db.Column('summary_id', db.String(100), primary_key=True)
+    userId = db.Column('calendar_date', db.String(100))
+    userAccessToken = db.Column('calendar_date', db.String(100))
     calendarDate = db.Column('calendar_date', db.String(100))
     startTimeInSeconds = db.Column('start_time_in_seconds', db.Integer)
     startTimeOffsetInSeconds = db.Column('start_time_offset_in_seconds', db.Integer)
@@ -87,6 +91,8 @@ class GarminSleepSummarieSchema(ma.Schema):
 class GarminStressSummarie(db.Model):
     __tablename__ = "stress_summarie"
     summaryId = db.Column('summary_id', db.String(100), primary_key=True)
+    userId = db.Column('calendar_date', db.String(100))
+    userAccessToken = db.Column('calendar_date', db.String(100))
     calendarDate = db.Column('calendar_date', db.String(100))
     startTimeInSeconds = db.Column('start_time_in_seconds', db.Integer)
     startTimeOffsetInSeconds = db.Column('start_time_offset_in_seconds', db.Integer)
@@ -102,6 +108,8 @@ class GarminStressSummarieSchema(ma.Schema):
 class GarminUserMetricsSummarie(db.Model):
     __tablename__ = "user_metrics_summarie"
     summaryId = db.Column('summary_id', db.String(100), primary_key=True)
+    userId = db.Column('calendar_date', db.String(100))
+    userAccessToken = db.Column('calendar_date', db.String(100))
     calendarDate = db.Column('calendar_date', db.String(100))
     Vo2Max = db.Column('vo2max', db.Float)
     fitnessAge = db.Column('fitness_age', db.Integer)

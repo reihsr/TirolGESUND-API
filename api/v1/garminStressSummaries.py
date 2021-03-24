@@ -24,6 +24,8 @@ def createGarminStressSummarie(garminStressSummarie):
         stress = GarminStressSummarie()
         stress.summaryId = garminStressSummarie.get("summaryId")
         db.session.add(stress)
+    stress.userId = garminStressSummarie.get("userId")
+    stress.userAccessToken = garminStressSummarie.get("userAccessToken")
     stress.calendarDate = garminStressSummarie.get("calendarDate")
     stress.startTimeInSeconds = garminStressSummarie.get("startTimeInSeconds")
     stress.startTimeOffsetInSeconds = garminStressSummarie.get("startTimeOffsetInSeconds")

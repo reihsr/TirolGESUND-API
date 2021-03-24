@@ -24,6 +24,8 @@ def createGarminDailySummarie(garminDailySummarie):
         summary = GarminDailySummarie()
         summary.summaryId = garminDailySummarie.get("summaryId")
         db.session.add(summary)
+    summary.userId = garminDailySummarie.get("userId")
+    summary.userAccessToken = garminDailySummarie.get("userAccessToken")
     summary.calendarDate = garminDailySummarie.get("calendarDate")
     summary.startTimeInSeconds = garminDailySummarie.get("startTimeInSeconds")
     summary.startTimeOffsetInSeconds = garminDailySummarie.get("startTimeOffsetInSeconds")

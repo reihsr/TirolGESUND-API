@@ -110,25 +110,41 @@ definitions:
     example:
       Version: "1.0.0"
   GarminDailySummaries:
-    type: "array"
-    items:
-      $ref: "#/definitions/GarminDailySummary"
+    type: "object"
+    properties:
+      dailies:
+        type: "array"
+        items:
+          $ref: "#/definitions/GarminDailySummary"
   GarminSleepSummaries:
-    type: "array"
-    items:
-      $ref: "#/definitions/GarminSleepSummary"
+    type: "object"
+    properties:
+      sleeps:
+        type: "array"
+        items:
+          $ref: "#/definitions/GarminSleepSummary"
   GarminStressSummaries:
-    type: "array"
-    items:
-      $ref: "#/definitions/GarminStressSummary"
+    type: "object"
+    properties:
+      stressDetails:
+        type: "array"
+        items:
+          $ref: "#/definitions/GarminStressSummary"
   GarminUserMetricsSummaries:
-    type: "array"
-    items:
-      $ref: "#/definitions/GarminUserMetricsSummary"
+    type: "object"
+    properties:
+      userMetrics:
+        type: "array"
+        items:
+          $ref: "#/definitions/GarminUserMetricsSummary"
   GarminDailySummary:
     type: "object"
     properties:
       summaryId:
+        type: "string"
+      userId:
+        type: "string"
+      userAccessToken:
         type: "string"
       calendarDate:
         type: "string"
@@ -227,6 +243,10 @@ definitions:
     properties:
       summaryId:
         type: "string"
+      userId:
+        type: "string"
+      userAccessToken:
+        type: "string"
       calendarDate:
         type: "string"
       startTimeInSeconds:
@@ -266,6 +286,10 @@ definitions:
     properties:
       summaryId:
         type: "string"
+      userId:
+        type: "string"
+      userAccessToken:
+        type: "string"
       calendarDate:
         type: "string"
       startTimeInSeconds:
@@ -285,6 +309,10 @@ definitions:
     type: "object"
     properties:
       summaryId:
+        type: "string"
+      userId:
+        type: "string"
+      userAccessToken:
         type: "string"
       calendarDate:
         type: "string"

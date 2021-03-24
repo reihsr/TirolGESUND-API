@@ -24,6 +24,8 @@ def createGarminSleepSummarie(garminSleepSummarie):
         sleep = GarminSleepSummarie()
         sleep.summaryId = garminSleepSummarie.get("summaryId")
         db.session.add(sleep)
+    sleep.userId = garminSleepSummarie.get("userId")
+    sleep.userAccessToken = garminSleepSummarie.get("userAccessToken")
     sleep.calendarDate = garminSleepSummarie.get("calendarDate")
     sleep.startTimeInSeconds = garminSleepSummarie.get("startTimeInSeconds")
     sleep.startTimeOffsetInSeconds = garminSleepSummarie.get("startTimeOffsetInSeconds")
