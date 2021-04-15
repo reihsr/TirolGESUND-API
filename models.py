@@ -24,7 +24,7 @@ class ParticipantSchema(ma.Schema):
 class GarminDailySummarie(db.Model):
     __tablename__ = "daily_summarie"
     summaryId = db.Column('summary_id', db.String(100), primary_key=True)
-    userId = db.Column('user_id', db.String(100))
+    userId = db.Column('user_id', db.String(100))calendar_date
     userAccessToken = db.Column('user_access_token', db.String(100))
     calendarDate = db.Column('calendar_date', db.String(100))
     startTimeInSeconds = db.Column('start_time_in_seconds', db.Integer)
